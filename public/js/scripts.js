@@ -30,6 +30,8 @@ function resetForm() {
     let statusForm = document.getElementById("check-status-form");
     let statusText = document.getElementById("already-registered");
     let refCode = document.getElementById("copy-referral");
+    let listStatus = document.getElementById('list-status')
+    listStatus.textContent = "";
     statusText.style.display = "block";
     refCode.style.display = "none";
     signupForm.style.display = "block";
