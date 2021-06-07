@@ -1,0 +1,355 @@
+* {
+    font-family: "Telegraf Medium", Tahoma, serif;
+}
+
+.seperate {
+    display: block;
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 0;
+}
+
+.btn-signup {
+    color: #fff;
+    font-family: "Telegraf Medium", Tahoma, serif;
+    font-weight: bold;
+    background-color: #28df99;
+    border-color: #28df99;
+    outline: none;
+}
+
+.btn-signup:hover {
+    color: #fff;
+    font-family: "Telegraf Medium", Tahoma, serif;
+    background-color: #28df99;
+    border-color: #28df99;
+    border-radius: 60%;
+    cursor: pointer;
+}
+
+.btn-signup:active {
+    outline: none;
+    cursor: pointer;
+}
+
+.btn-signup:focus {
+    outline: none;
+}
+
+.btn-block-half {
+    display: block;
+    width: 70%;
+    font-size: 2vw;
+}
+
+.btn-status {
+    text-decoration: underline !important;
+    font-weight: 700;
+    font-size: 1rem;
+    margin: 0 !important;
+    cursor: pointer;
+}
+
+.rounded-pill {
+    border-radius: 50rem !important;
+}
+
+.masthead-text {
+    padding-left: 4rem;
+}
+
+.masthead-buckets {
+    margin-left: 2vw;
+    font-family: "Telegraf Medium", Tahoma, serif;
+    font-size: 5vw;
+    color: #FFFFFF;
+}
+
+header.masthead {
+    position: relative;
+    padding-top: 4rem;
+    padding-bottom: 6rem;
+    background: linear-gradient(to right, #d2f6c5 0%, #d2f6c5 65%, #28df99 65%, #28df99 65%, #28df99 100%);
+    width: 100%;
+    display: grid;
+    grid-template-columns: 55% 20% 20%;
+    align-items: center;
+}
+
+header.masthead h1 {
+    font-family: Tahoma, serif;
+    font-weight: bold;
+    font-size: 5vw;
+}
+
+@media (min-width: 768px) {
+    header.masthead {
+        padding-top: 6rem;
+        padding-bottom: 9rem;
+    }
+}
+
+@media (max-width: 600px) {
+    header.masthead {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+        grid-row-gap: 2vw;
+    }
+    header.masthead h1 {
+        font-size: 8vw;
+    }
+    .masthead-img {
+        width: 40% !important;
+        justify-self: center;
+    }
+    .masthead-text {
+        padding-left: 1rem;
+    }
+    .masthead-buckets {
+        font-size: 20vw;
+        justify-self: center;
+    }
+}
+
+.modal-body input {
+    width: 100%;
+    margin: 5px 0;
+}
+
+.second-slide {
+    position: relative;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    background: #28df99;
+    width: 100%;
+    display: grid;
+    grid-template-rows: 40% 60%;
+    grid-template-columns: 25% 45%;
+    grid-template-areas: "img icon" "img txt";
+    grid-column-gap: 15vw;
+    padding-left: 15vw;
+}
+
+.second-slide-img {
+    grid-area: img;
+    align-self: center;
+}
+
+.second-slide-text {
+    font-family: "Telegraf Medium", Tahoma, serif;
+    font-weight: bold;
+    font-size: 4vw;
+    color: #F6F7D4;
+    grid-area: txt;
+}
+
+.second-slide-icon {
+    color: #F6F7D4;
+    grid-area: icon;
+    align-self: end;
+    justify-self: end;
+    font-size: 7vw;
+}
+
+.call-to-action {
+    position: relative;
+    padding-top: 4rem;
+    padding-bottom: 6rem;
+    background: linear-gradient(to right, #d2f6c5 0%, #d2f6c5 65%, #28df99 65%, #28df99 65%, #28df99 100%);
+    width: 100%;
+    display: grid;
+    grid-template-columns: 55% 20% 20%;
+    align-items: center;
+}
+
+.call-to-action-text {
+    font-size: 4vw;
+    margin-bottom: 3vw;
+    font-weight: bold;
+}
+
+.fourth-slide {
+    position: relative;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    background: #28df99;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 25% 55%;
+    grid-column-gap: 10vw;
+    padding-left: 15vw;
+    align-items: center;
+}
+
+.fourth-slide-text {
+    font-family: "Telegraf Medium", Tahoma, serif;
+    font-weight: bold;
+    font-size: 4vw;
+    color: #F6F7D4;
+}
+
+.fourth-slide-text2 {
+    margin-top: 5vw;
+    font-family: "Telegraf Medium", Tahoma, serif;
+    font-size: 2vw;
+    color: #FFF;
+}
+
+@media (max-width: 600px) {
+    .call-to-action {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+        grid-row-gap: 2vw;
+    }
+    .call-to-action h1 {
+        font-size: 8vw;
+    }
+}
+
+.contact {
+    padding: 16px;
+    background: #d2f6c5;
+    font-family: "Telegraf Medium", Tahoma, serif;
+}
+
+.btn-green {
+    background-color: #28df99;
+    color: #fff !important;
+}
+
+#modal-container {
+    position: fixed;
+    display: table;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    transform: scale(0);
+    z-index: 1;
+}
+
+#modal-container.anim {
+    transform: scaleY(0.01) scaleX(0);
+    animation: unfoldIn 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+#modal-container.anim .modal-background .modal {
+    transform: scale(0);
+    animation: zoomIn 0.5s 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+#modal-container.anim.out {
+    transform: scale(1);
+    animation: unfoldOut 1s 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+#modal-container.anim.out .modal-background .modal {
+    animation: zoomOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+#modal-container.anim2 {
+    transform: scaleY(0.01) scaleX(0);
+    animation: unfoldIn 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+#modal-container.anim2 .modal-background .modal {
+    transform: scale(0);
+    animation: zoomIn 0.5s 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+#modal-container.anim2.out {
+    transform: scale(1);
+    animation: unfoldOut 1s 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+#modal-container.anim2.out .modal-background .modal {
+    animation: zoomOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+#modal-container .modal-background {
+    display: table-cell;
+    background: rgba(0, 0, 0, 0.8);
+    text-align: center;
+    vertical-align: middle;
+}
+
+#modal-container .modal-background .modal {
+    background: white;
+    padding: 50px;
+    display: inline-block;
+    border-radius: 3px;
+    font-weight: 300;
+    position: relative;
+}
+
+#modal-container .modal-background .modal h2 {
+    font-size: 25px;
+    line-height: 25px;
+    margin-bottom: 15px;
+}
+
+#modal-container .modal-background .modal p {
+    font-size: 18px;
+    line-height: 22px;
+}
+
+#modal-container .modal-background .modal .modal-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 3px;
+}
+
+#modal-container .modal-background .modal .modal-svg rect {
+    stroke: #fff;
+    stroke-width: 2px;
+    stroke-dasharray: 778;
+    stroke-dashoffset: 778;
+}
+
+@keyframes unfoldIn {
+    0% {
+        transform: scaleY(0.005) scaleX(0);
+    }
+    50% {
+        transform: scaleY(0.005) scaleX(1);
+    }
+    100% {
+        transform: scaleY(1) scaleX(1);
+    }
+}
+
+@keyframes unfoldOut {
+    0% {
+        transform: scaleY(1) scaleX(1);
+    }
+    50% {
+        transform: scaleY(0.005) scaleX(1);
+    }
+    100% {
+        transform: scaleY(0.005) scaleX(0);
+    }
+}
+
+@keyframes zoomIn {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes zoomOut {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0);
+    }
+}

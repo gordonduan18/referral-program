@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Buckets Investing</title>
+    <!-- Favicon-->
+    <link id="favicon" rel="icon" href="assets/favicon.ico">
+    <!-- Font Awesome icons (free version)-->
+    <!-- Bootstrap CSS -->
+    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <!-- Simple line icons-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <link href="css/stylesheet.css" rel="stylesheet" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+</head>
+
+<body>
+
+    <!-- Signup Modal -->
+    <div id="modal-container">
+        <div class="modal-background">
+            <div class="modal modal-lg">
+                <div class="modal-header">
+                    <h3 style="margin: 0 auto" class="modal-title" id="exampleModalLongTitle"><strong>Sign Up for Early
+                            Access</strong></h3>
+                    <button type="button" id="close-signup" class="close" aria-label="Close" onclick="resetForm()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="signup-form">
+                        <form>
+                            <input type="text" id="name" placeholder="Full Name" required>
+                            <input type="email" id="email" placeholder="E-mail" required />
+                            <input type="submit" id="submit-signup" onclick="toggleRefCode()">
+                        </form>
+                    </div>
+                    <script>
+                        $('#submit-signup').on('click', function(e) {
+                            e.preventDefault();
+                            const userName = document.querySelector('#name');
+                            const userMail = document.querySelector('#email');
+                            if (userName.value === "") {
+                                toggleRefCode();
+                                alert("Please enter your name")
+                            } else if (userMail.value === "") {
+                                toggleRefCode();
+                                alert("Please enter your email")
+                            }
+                            let referralID;
+                            $.ajax({
+                                url: '/add-user',
+                                type: "POST",
+                                data: {
+                                    'name': $('#name').val(),
+                                    'email': $('#email').val()
+                                },
+                                success: function(res) {
+                                    const rcode = document.querySelector('#copy-referral-code')
+                                    referralID = res.referralCode
+                                    rcode.value = "localhost:3000/?refid=" + res.referralCode
+                                },
+                                error: function(jqXHR, textStatus, errorMessage) {
+
+                                }
+                            });
+                            $.ajax({
+                                url: '/get-user',
+                                type: "GET",
+                                success: function(res) {
+                                    const listStatus = document.querySelector('#list-status')
+                                    listStatus.textContent = "You are currently number " + res.currentPos + " in line.";
+                                },
+                                error: function(jqXHR, textStatus, errorMessage) {
+                                    alert(errorMessage);
+                                }
+                            });
+                        })
+                    </script>
+                    <div id="check-status-form" style="display: none;">
+                        <form>
+                            <input type="email" id="email-check" placeholder="E-mail" required />
+                            <input type="submit" id="submit-check" value="Check My Status">
+                        </form>
+                        <p id="check-status"></p>
+                        <script>
+                            $('#submit-check').on('click', function(e) {
+                                e.preventDefault();
+                                const userMail = document.querySelector('#email-check');
+                                if (userMail.value === "") {
+                                    alert("Please enter your email")
+                                }
+                                $.ajax({
+                                    url: '/check-user',
+                                    type: "PUT",
+                                    data: {
+                                        'email': $('#email-check').val()
+                                    },
+                                    success: function(res) {
+                                        const listStatus = document.querySelector('#check-status')
+                                        listStatus.textContent = "You are currently number " + res.currentPos + " in line."
+                                        const refferalLink = document.querySelector('#copy-referral')
+                                        const rcode = document.querySelector('#copy-referral-code')
+                                        referralID = res.code
+                                        rcode.value = "localhost:3000/?refid=" + res.code
+                                        refferalLink.style.display = "block";
+                                    },
+                                    error: function(jqXHR, textStatus, errorMessage) {
+
+                                    }
+                                });
+                            })
+                        </script>
+                    </div>
+                    <div id="already-registered">
+                        <!-- Check my status Button -->
+                        <p style="font-weight: 700; font-size: rem;"> Already registered? click here to
+                            <span id="registered" type="button" class="btn-status" onclick="toggleCheckStatus()">
+                                check your status
+                            </span>
+                        </p>
+                    </div>
+                    <div id="copy-referral" style="display: none;">
+                        <p id='list-status'></p>
+                        <p>Refer your friends to move up the list with this link</p>
+                        <input type="text" value="" id="copy-referral-code">
+                        <button onclick="copyCode()">Copy Code</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of Signup Modal -->
+
+    <!-- First Slide-->
+    <header class="masthead">
+        <div class="masthead-text">
+            <div>
+                <h1 class="mb-5">The <br> <span style="color:#28DF99"> SIMPLEST </span> <br> Way to Share <br> and Follow <br> <span style="color:#28DF99"> Portfolios </span></h1>
+            </div>
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <button id="anim" class="btn-block-half rounded-pill btn-lg btn-signup" type="submit">EARLY
+                    ACCESS</button>
+            </div>
+        </div>
+        <div class="masthead-img">
+            <img src="assets/img/phone-1.png" class="img-fluid">
+        </div>
+        <div class="masthead-buckets">
+            <strong>Buckets</strong>
+        </div>
+    </header>
+
+
+
+    <hr class="seperate">
+
+    <!-- Second Slide-->
+    <section class="second-slide">
+        <div class="second-slide-img" data-aos="fade-right" data-aos-duration="1200">
+            <img src="assets/img/phone-2.png" class="img-fluid">
+        </div>
+        <h1 class="second-slide-text">Get notified when your friends trade</h1>
+        <i class="far fa-bell second-slide-icon"></i>
+    </section>
+
+    <hr class="seperate">
+
+    <!-- Call to Action-->
+    <section class="call-to-action">
+        <div class="masthead-text">
+            <div>
+                <h1 class="call-to-action-text"> <u> HyperLink </u> your Portfolio <span style="color:#28DF99"> TODAY
+                    </span> </h1>
+            </div>
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <button id="anim2" class="btn-block-half rounded-pill btn-lg btn-signup" type="submit">SIGN UP</button>
+            </div>
+        </div>
+        <div class="masthead-img" data-aos="fade-left" data-aos-duration="1200">
+            <img src="assets/img/phone-3.png" class="img-fluid">
+        </div>
+        <div class="masthead-buckets" data-aos="zoom-in" data-aos-duration="1200">
+            <strong>Buckets</strong>
+        </div>
+    </section>
+
+    <hr class="seperate">
+
+    <!-- Fourth Slide -->
+    <section class="fourth-slide">
+        <div data-aos="fade-right" data-aos-duration="1200">
+            <img src="assets/img/phone-4.png" class="img-fluid">
+        </div>
+        <div>
+            <h1 class="fourth-slide-text">Create, share, follow and invest in stock or crypto baskets</h1>
+            <h4 class="fourth-slide-text2">COMING SOON...</h4>
+        </div>
+    </section>
+
+    <hr class="seperate">
+
+    <!--Section: Contact v.2-->
+    <section class="contact">
+        <!--Section heading-->
+        <h2 class="h1-responsive font-weight-bold text-center my-4">Contact us</h2>
+        <!--Section description-->
+        <p class="text-center w-responsive mx-auto mb-5">Do you have any questions? Please do not hesitate to contact us directly. </p>
+        <div class="row">
+            <!--Grid column-->
+            <div class="col-md-12 mb-md-0 mb-5">
+
+                <form id="contact-form" name="contact-form" action="/contact" method="POST" role="form">
+                    <!--Grid row-->
+                    <div class="row">
+                        <!--Grid column-->
+                        <div class="col-md-6">
+                            <div class="md-form mb-0">
+                                <input type="text" id="contact-name" name="name" class="form-control">
+                                <label for="name" class="">Your name</label>
+                            </div>
+                        </div>
+                        <!--Grid column-->
+                        <!--Grid column-->
+                        <div class="col-md-6">
+                            <div class="md-form mb-0">
+                                <input type="text" id="contact-email" name="email" class="form-control">
+                                <label for="email" class="">Your email</label>
+                            </div>
+                        </div>
+                        <!--Grid column-->
+                    </div>
+                    <!--Grid row-->
+                    <!--Grid row-->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="md-form mb-0">
+                                <input type="text" id="subject" name="subject" class="form-control">
+                                <label for="subject" class="">Subject</label>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Grid row-->
+
+                    <!--Grid row-->
+                    <div class="row">
+
+                        <!--Grid column-->
+                        <div class="col-md-12">
+
+                            <div class="md-form">
+                                <textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea"></textarea>
+                                <label for="message">Your message</label>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--Grid row-->
+
+                </form>
+
+                <div class="text-center text-md-left">
+                    <a class="btn btn-green" onclick="document.getElementById('contact-form').submit();">SEND</a>
+                </div>
+                <div class="status"></div>
+            </div>
+            <!--Grid column-->
+        </div>
+
+    </section>
+    <!--Section: Contact v.2-->
+    <!-- Footer-->
+    <footer class="footer bg-light text-center">
+        <p class="text-muted medium mb-4 mb-lg-0">© Buckets Investing 2021. All Rights Reserved.</p>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+
+    <script>
+        $('#anim').click(function() {
+            var buttonId = $(this).attr('id');
+            $('#modal-container').removeAttr('class').addClass(buttonId);
+            $('body').addClass('modal-active');
+        })
+        $('#anim2').click(function() {
+            var buttonId = $(this).attr('id');
+            $('#modal-container').removeAttr('class').addClass(buttonId);
+            $('body').addClass('modal-active');
+        })
+        $('#close-signup').click(function() {
+            $('#modal-container').addClass('out');
+            $('body').removeClass('modal-active');
+        });
+    </script>
+</body>
+
+</html>
