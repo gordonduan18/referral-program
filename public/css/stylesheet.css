@@ -1,5 +1,5 @@
 * {
-    font-family: "Telegraf Medium", Tahoma, serif !important;
+    font-family: "Telegraf Medium", Tahoma, sans-serif !important;
 }
 
 .background-one {
@@ -65,8 +65,8 @@
 
 .btn-signup {
     color: #fff;
-    font-family: "Telegraf Medium", Tahoma, serif;
     font-weight: bold;
+    font-size: 2rem;
     background-color: #28df99;
     border-color: #28df99;
     outline: none;
@@ -74,7 +74,6 @@
 
 .btn-signup:hover {
     color: #fff;
-    font-family: "Telegraf Medium", Tahoma, serif;
     background-color: #28df99;
     border-color: #28df99;
     border-radius: 60%;
