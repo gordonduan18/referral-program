@@ -1,5 +1,56 @@
 * {
-    font-family: "Telegraf Medium", Tahoma, serif;
+    font-family: "Telegraf Medium", Tahoma, serif !important;
+}
+
+.background-one {
+    background: linear-gradient(to right, #d2f6c5 0%, #d2f6c5 65%, #28df99 65%, #28df99 65%, #28df99 100%);
+}
+
+.background-two {
+    background: #28df99;
+}
+
+.col-1-text {
+    font-weight: bold;
+    font-size: 5vw;
+}
+
+.buckets-text {
+    font-size: 5vw;
+    color: #FFF;
+}
+
+.second-slide-text {
+    font-weight: bold;
+    font-size: 4vw;
+    color: #F6F7D4;
+}
+
+.fourth-slide-text {
+    font-size: 2vw;
+    color: #FFF;
+}
+
+.bell-icon {
+    color: #F6F7D4;
+    font-size: 7vw;
+}
+
+@media (max-width: 768px) {
+    .background-one {
+        background: #d2f6c5;
+    }
+    .col-1-text,
+    .second-slide-text {
+        font-size: 4em;
+    }
+    .bell-icon {
+        font-size: 8em;
+        margin: auto;
+    }
+    .fourth-slide-text {
+        font-size: 2em;
+    }
 }
 
 .seperate {
@@ -39,12 +90,6 @@
     outline: none;
 }
 
-.btn-block-half {
-    display: block;
-    width: 70%;
-    font-size: 2vw;
-}
-
 .btn-status {
     text-decoration: underline !important;
     font-weight: 700;
@@ -57,161 +102,13 @@
     border-radius: 50rem !important;
 }
 
-.masthead-text {
-    padding-left: 4rem;
-}
-
-.masthead-buckets {
-    margin-left: 2vw;
-    font-family: "Telegraf Medium", Tahoma, serif;
-    font-size: 5vw;
-    color: #FFFFFF;
-}
-
-header.masthead {
-    position: relative;
-    padding-top: 4rem;
-    padding-bottom: 6rem;
-    background: linear-gradient(to right, #d2f6c5 0%, #d2f6c5 65%, #28df99 65%, #28df99 65%, #28df99 100%);
-    width: 100%;
-    display: grid;
-    grid-template-columns: 55% 20% 20%;
-    align-items: center;
-}
-
-header.masthead h1 {
-    font-family: Tahoma, serif;
-    font-weight: bold;
-    font-size: 5vw;
-}
-
-@media (min-width: 768px) {
-    header.masthead {
-        padding-top: 6rem;
-        padding-bottom: 9rem;
-    }
-}
-
-@media (max-width: 600px) {
-    header.masthead {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto auto auto;
-        grid-row-gap: 2vw;
-    }
-    header.masthead h1 {
-        font-size: 8vw;
-    }
-    .masthead-img {
-        width: 40% !important;
-        justify-self: center;
-    }
-    .masthead-text {
-        padding-left: 1rem;
-    }
-    .masthead-buckets {
-        font-size: 20vw;
-        justify-self: center;
-    }
-}
-
 .modal-body input {
     width: 100%;
     margin: 5px 0;
 }
 
-.second-slide {
-    position: relative;
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-    background: #28df99;
-    width: 100%;
-    display: grid;
-    grid-template-rows: 40% 60%;
-    grid-template-columns: 25% 45%;
-    grid-template-areas: "img icon" "img txt";
-    grid-column-gap: 15vw;
-    padding-left: 15vw;
-}
-
-.second-slide-img {
-    grid-area: img;
-    align-self: center;
-}
-
-.second-slide-text {
-    font-family: "Telegraf Medium", Tahoma, serif;
-    font-weight: bold;
-    font-size: 4vw;
-    color: #F6F7D4;
-    grid-area: txt;
-}
-
-.second-slide-icon {
-    color: #F6F7D4;
-    grid-area: icon;
-    align-self: end;
-    justify-self: end;
-    font-size: 7vw;
-}
-
-.call-to-action {
-    position: relative;
-    padding-top: 4rem;
-    padding-bottom: 6rem;
-    background: linear-gradient(to right, #d2f6c5 0%, #d2f6c5 65%, #28df99 65%, #28df99 65%, #28df99 100%);
-    width: 100%;
-    display: grid;
-    grid-template-columns: 55% 20% 20%;
-    align-items: center;
-}
-
-.call-to-action-text {
-    font-size: 4vw;
-    margin-bottom: 3vw;
-    font-weight: bold;
-}
-
-.fourth-slide {
-    position: relative;
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-    background: #28df99;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 25% 55%;
-    grid-column-gap: 10vw;
-    padding-left: 15vw;
-    align-items: center;
-}
-
-.fourth-slide-text {
-    font-family: "Telegraf Medium", Tahoma, serif;
-    font-weight: bold;
-    font-size: 4vw;
-    color: #F6F7D4;
-}
-
-.fourth-slide-text2 {
-    margin-top: 5vw;
-    font-family: "Telegraf Medium", Tahoma, serif;
-    font-size: 2vw;
-    color: #FFF;
-}
-
-@media (max-width: 600px) {
-    .call-to-action {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto auto auto;
-        grid-row-gap: 2vw;
-    }
-    .call-to-action h1 {
-        font-size: 8vw;
-    }
-}
-
 .contact {
     background: #d2f6c5;
-    font-family: "Telegraf Medium", Tahoma, serif;
 }
 
 .btn-green {

@@ -18,7 +18,8 @@
     <!-- Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
     <!-- Custom CSS -->
     <link href="css/stylesheet.css" rel="stylesheet" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -31,7 +32,7 @@
     <!-- Signup Modal -->
     <div id="modal-container">
         <div class="modal-background">
-            <div class="modal modal-lg">
+            <div class="modal modal-lg" style="height: auto;">
                 <div class="modal-header">
                     <h3 style="margin: 0 auto" class="modal-title" id="exampleModalLongTitle"><strong>Sign Up for Early
                             Access</strong></h3>
@@ -70,7 +71,7 @@
                                 success: function(res) {
                                     const rcode = document.querySelector('#copy-referral-code')
                                     referralID = res.referralCode
-                                    rcode.value = "localhost:3000/?refid=" + res.referralCode
+                                    rcode.value = "http://bucketsinvesting.herokuapp.com/?refid=" + res.referralCode
                                 },
                                 error: function(jqXHR, textStatus, errorMessage) {
 
@@ -114,7 +115,7 @@
                                         const refferalLink = document.querySelector('#copy-referral')
                                         const rcode = document.querySelector('#copy-referral-code')
                                         referralID = res.code
-                                        rcode.value = "localhost:3000/?refid=" + res.code
+                                        rcode.value = "http://bucketsinvesting.herokuapp.com/?refid=" + res.code
                                         refferalLink.style.display = "block";
                                     },
                                     error: function(jqXHR, textStatus, errorMessage) {
@@ -144,136 +145,155 @@
     </div>
     <!-- End of Signup Modal -->
 
-    <!-- First Slide-->
-    <header class="masthead">
-        <div class="masthead-text">
-            <div>
-                <h1 class="mb-5">The <br> <span style="color:#28DF99"> SIMPLEST </span> <br> Way to Share <br> and Follow <br> <span style="color:#28DF99"> Portfolios </span></h1>
+    <!-- First Slide -->
+    <section>
+        <div class="background-one container-fluid py-5">
+            <div class="row py-5">
+                <div class="col-md-5 offset-md-1 text-center text-md-start d-flex flex-column justify-content-center">
+                    <div>
+                        <h1 class="mb-5 col-1-text">The <br> <span style="color:#28DF99"> SIMPLEST </span> <br> Way to Share
+                            <br> and Follow <br> <span style="color:#28DF99"> Portfolios </span>
+                        </h1>
+                    </div>
+                    <div class="d-grid">
+                        <button id="anim" class="btn-lg btn-signup rounded-pill offset-3 col-6 col-md-9 col-lg-8 offset-md-0" type="submit">EARLY
+                            ACCESS</button>
+                    </div>
+                </div>
+                <div class="col-md-3 pt-5 pt-md-0 d-flex justify-content-center">
+                    <img src="assets/img/phone-1.png" class="img-fluid">
+                </div>
+                <div class="col-md-3 align-self-center d-none d-md-block">
+                    <strong class="buckets-text">Buckets</strong>
+                </div>
             </div>
-            <div class="col-md-10 col-lg-8 col-xl-7">
-                <button id="anim" class="btn-block-half rounded-pill btn-lg btn-signup" type="submit">EARLY
-                    ACCESS</button>
-            </div>
         </div>
-        <div class="masthead-img">
-            <img src="assets/img/phone-1.png" class="img-fluid">
-        </div>
-        <div class="masthead-buckets">
-            <strong>Buckets</strong>
-        </div>
-    </header>
+    </section>
 
-
-
-    <hr class="seperate">
+    <hr class="seperate d-none d-md-block">
 
     <!-- Second Slide-->
-    <section class="second-slide">
-        <div class="second-slide-img" data-aos="fade-right" data-aos-duration="1200">
-            <img src="assets/img/phone-2.png" class="img-fluid">
-        </div>
-        <h1 class="second-slide-text">Get notified when your friends trade</h1>
-        <i class="far fa-bell second-slide-icon"></i>
-    </section>
-
-    <hr class="seperate">
-
-    <!-- Call to Action-->
-    <section class="call-to-action">
-        <div class="masthead-text">
-            <div>
-                <h1 class="call-to-action-text"> <u> HyperLink </u> your Portfolio <span style="color:#28DF99"> TODAY
-                    </span> </h1>
+    <section>
+        <div class="background-two container-fluid py-5">
+            <div class="row py-5">
+                <div class="col-md-3 offset-md-1 d-flex justify-content-center order-2 order-md-1" data-aos="fade-right" data-aos-duration="1200">
+                    <img src="assets/img/phone-2.png" class="img-fluid">
+                </div>
+                <div class="col-md-6 offset-md-1 d-flex flex-column justify-content-center order-1 order-md-2">
+                    <i class="far fa-bell bell-icon align-self-md-end"></i>
+                    <h1 class="second-slide-text text-center mb-5 mb-md-0">Get notified when your friends trade</h1>
+                </div>
             </div>
-            <div class="col-md-10 col-lg-8 col-xl-7">
-                <button id="anim2" class="btn-block-half rounded-pill btn-lg btn-signup" type="submit">SIGN UP</button>
-            </div>
-        </div>
-        <div class="masthead-img" data-aos="fade-left" data-aos-duration="1200">
-            <img src="assets/img/phone-3.png" class="img-fluid">
-        </div>
-        <div class="masthead-buckets" data-aos="zoom-in" data-aos-duration="1200">
-            <strong>Buckets</strong>
         </div>
     </section>
 
-    <hr class="seperate">
+    <hr class="seperate d-none d-md-block">
+
+    <!-- Third Slide-->
+    <section>
+        <div class="background-one container-fluid py-5">
+            <div class="row py-5">
+                <div class="col-md-5 offset-md-1 text-center text-md-start d-flex flex-column justify-content-center">
+                    <div>
+                        <h1 class="col-1-text"> <u> HyperLink </u> your Portfolio <span style="color:#28DF99">
+                                TODAY
+                            </span> </h1>
+                    </div>
+                    <div class="d-grid">
+                        <button id="anim2" class="btn-lg btn-signup rounded-pill offset-3 col-6 col-md-9 col-lg-8 offset-md-0" type="submit">SIGN UP</button>
+                    </div>
+                </div>
+                <div class="col-md-3 pt-5 pt-md-0 d-flex justify-content-center" data-aos="fade-left" data-aos-duration="1200">
+                    <img src="assets/img/phone-3.png" class="img-fluid">
+                </div>
+                <div class="col-md-3 align-self-center d-none d-md-block" data-aos="zoom-in" data-aos-duration="1200">
+                    <strong class="buckets-text">Buckets</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="seperate d-none d-md-block">
 
     <!-- Fourth Slide -->
-    <section class="fourth-slide">
-        <div data-aos="fade-right" data-aos-duration="1200">
-            <img src="assets/img/phone-4.png" class="img-fluid">
-        </div>
-        <div>
-            <h1 class="fourth-slide-text">Create, share, follow and invest in stock or crypto baskets</h1>
-            <h4 class="fourth-slide-text2">COMING SOON...</h4>
+    <section>
+        <div class="background-two container-fluid py-5">
+            <div class="row py-5">
+                <div class="col-md-3 offset-md-1 d-flex justify-content-center order-2 order-md-1" data-aos="fade-right" data-aos-duration="1200">
+                    <img src="assets/img/phone-4.png" class="img-fluid">
+                </div>
+                <div class="col-md-6 offset-md-1 d-flex flex-column justify-content-center order-1 order-md-2">
+                    <h1 class="second-slide-text text-center text-md-start mb-5 mb-md-0">Create, share, follow and invest in stock or crypto baskets</h1>
+                    <h4 class="fourth-slide-text text-center text-md-start mb-5 mb-md-0 mt-0 mt-md-5">COMING SOON...</h4>
+                </div>
+            </div>
         </div>
     </section>
 
-    <hr class="seperate">
+    <hr class="seperate d-none d-md-block">
 
     <!--Section: Contact v.2-->
     <section class="contact pt-4">
         <!--Section heading-->
-        <h2 class="h1-responsive font-weight-bold text-center mb-4">Contact us</h2>
-        <!--Section description-->
-        <p class="text-center w-responsive mx-auto mb-2">Do you have any questions? Please do not hesitate to contact us directly. </p>
-        <div class="row justify-content-center">
-            <!--Grid column-->
-            <div class="col-md-5 mb-md-0 mb-5">
+        <h1 class="h1-responsive font-weight-bold text-center mb-4">Contact us</h2>
+            <!--Section description-->
+            <p class="text-center w-responsive mx-auto mb-2">Do you have any questions? Please do not hesitate to contact us directly. </p>
+            <div class="row justify-content-center">
+                <!--Grid column-->
+                <div class="col-md-5 mb-md-0 mb-5">
 
-                <form id="contact-form" name="contact-form" action="/contact" method="POST" role="form">
-                    <!--Grid row-->
-                    <div class="row my-1">
-                        <!--Grid column-->
-                        <div class="col-md-6">
-                            <div class="md-form mb-0">
-                                <input type="text" id="contact-name" name="name" class="form-control" placeholder="Name">
+                    <form id="contact-form" name="contact-form" action="/contact" method="POST" role="form">
+                        <!--Grid row-->
+                        <div class="row my-1">
+                            <!--Grid column-->
+                            <div class="col-md-6">
+                                <div class="md-form mb-0">
+                                    <input type="text" id="contact-name" name="name" class="form-control" placeholder="Name">
+                                </div>
+                            </div>
+                            <!--Grid column-->
+                            <!--Grid column-->
+                            <div class="col-md-6">
+                                <div class="md-form mb-0">
+                                    <input type="text" id="contact-email" name="email" class="form-control" placeholder="Email">
+                                </div>
+                            </div>
+                            <!--Grid column-->
+                        </div>
+                        <!--Grid row-->
+                        <!--Grid row-->
+                        <div class="row my-1">
+                            <div class="col-md-12">
+                                <div class="md-form mb-0">
+                                    <input type="text" id="subject" name="subject" class="form-control" placeholder="Subject">
+                                </div>
                             </div>
                         </div>
-                        <!--Grid column-->
-                        <!--Grid column-->
-                        <div class="col-md-6">
-                            <div class="md-form mb-0">
-                                <input type="text" id="contact-email" name="email" class="form-control" placeholder="Email">
+                        <!--Grid row-->
+
+                        <!--Grid row-->
+                        <div class="row my-1">
+
+                            <!--Grid column-->
+                            <div class="col-md-12">
+
+                                <div class="md-form">
+                                    <textarea type="text" id="message" name="message" rows="2" placeholder="Message" class="form-control md-textarea"></textarea>
+                                </div>
+
                             </div>
                         </div>
-                        <!--Grid column-->
+                        <!--Grid row-->
+
+                    </form>
+
+                    <div class="text-center mb-3">
+                        <a class="btn btn-green" onclick="document.getElementById('contact-form').submit();">SEND</a>
                     </div>
-                    <!--Grid row-->
-                    <!--Grid row-->
-                    <div class="row my-1">
-                        <div class="col-md-12">
-                            <div class="md-form mb-0">
-                                <input type="text" id="subject" name="subject" class="form-control" placeholder="Subject">
-                            </div>
-                        </div>
-                    </div>
-                    <!--Grid row-->
-
-                    <!--Grid row-->
-                    <div class="row my-1">
-
-                        <!--Grid column-->
-                        <div class="col-md-12">
-
-                            <div class="md-form">
-                                <textarea type="text" id="message" name="message" rows="2" placeholder="Message" class="form-control md-textarea"></textarea>
-                            </div>
-
-                        </div>
-                    </div>
-                    <!--Grid row-->
-
-                </form>
-
-                <div class="text-center mb-3">
-                    <a class="btn btn-green" onclick="document.getElementById('contact-form').submit();">SEND</a>
+                    <div class="status"></div>
                 </div>
-                <div class="status"></div>
+                <!--Grid column-->
             </div>
-            <!--Grid column-->
-        </div>
 
     </section>
     <!--Section: Contact v.2-->
@@ -282,7 +302,7 @@
         <p class="text-muted medium mb-4 mb-lg-0">© Buckets Investing 2021. All Rights Reserved.</p>
     </footer>
     <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     <!-- Core theme JS-->
     <script src="js/scripts.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
